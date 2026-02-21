@@ -3,128 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula Virtual | Canalización y Mediumnidad</title>
+    <title>Aula Virtual | Taller de Canalización</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #d4af37; --purple: #a29bfe; --dark: #0a0a0a; --white: #ffffff; --deep-purple: #6c5ce7; }
         body { background-color: var(--dark); color: var(--white); font-family: 'Montserrat', sans-serif; margin: 0; overflow-x: hidden; }
 
-        /* PANTALLA DE ACCESO */
-        #login-screen { position: fixed; width: 100%; height: 100%; background: var(--dark); display: flex; align-items: center; justify-content: center; z-index: 10000; }
-        .login-card { background: #1a1a1a; padding: 40px; border-radius: 15px; border: 1px solid var(--gold); text-align: center; box-shadow: 0 0 40px rgba(108, 92, 231, 0.2); max-width: 350px; width: 90%; }
-        .login-card h2 { font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 25px; letter-spacing: 2px; }
-        input { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #333; background: #000; color: white; box-sizing: border-box; outline: none; }
-        input:focus { border-color: var(--purple); }
-        .btn-login { background: var(--gold); color: black; border: none; padding: 14px 30px; border-radius: 50px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
-        .btn-login:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--gold); }
+        /* PANTALLA DE LOGIN ESTILO MÍSTICO */
+        #login-screen { 
+            position: fixed; 
+            width: 100%; 
+            height: 100%; 
+            background: radial-gradient(circle, #1a1a1a 0%, #000 100%); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            z-index: 10000; 
+        }
+        
+        .login-card { 
+            text-align: center; 
+            max-width: 400px; 
+            width: 90%; 
+            padding: 20px;
+        }
 
-        /* AULA VIRTUAL CONTENIDO */
+        /* El Ojo (puedes reemplazar 'ojo.png' por tu imagen) */
+        .eye-icon {
+            width: 120px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px var(--purple));
+            animation: glow 4s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 5px var(--purple)); transform: scale(1); }
+            to { filter: drop-shadow(0 0 20px var(--gold)); transform: scale(1.05); }
+        }
+
+        .login-card h2 { 
+            font-family: 'Cinzel', serif; 
+            color: var(--gold); 
+            margin-bottom: 5px; 
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .login-card p.subtitle-login {
+            color: var(--purple);
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .input-group { margin-bottom: 15px; position: relative; }
+
+        input { 
+            width: 100%; 
+            padding: 14px; 
+            border-radius: 5px; 
+            border: 1px solid #333; 
+            background: rgba(0,0,0,0.7); 
+            color: white; 
+            box-sizing: border-box; 
+            outline: none; 
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        input:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
+
+        .btn-login { 
+            background: transparent; 
+            color: var(--gold); 
+            border: 1px solid var(--gold); 
+            padding: 14px 30px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            width: 100%; 
+            transition: 0.3s; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover { 
+            background: var(--gold); 
+            color: black; 
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); 
+        }
+
+        /* CONTENIDO POST-LOGIN */
         #main-content { display: none; }
         header { background: #000; padding: 60px 20px; text-align: center; border-bottom: 2px solid var(--deep-purple); }
-        h1 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 2.2rem; letter-spacing: 3px; margin: 0; }
-        .tagline { color: var(--purple); text-transform: uppercase; font-size: 0.85rem; margin-top: 12px; letter-spacing: 5px; font-weight: 300; }
-
+        h1 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 2rem; letter-spacing: 3px; margin: 0; }
+        
         .container { max-width: 900px; margin: auto; padding: 40px 20px; }
 
         /* BIOGRAFIA */
         .bio-section { display: flex; align-items: center; gap: 30px; background: rgba(255,255,255,0.02); padding: 35px; border-radius: 20px; margin-bottom: 50px; border: 1px solid rgba(212, 175, 55, 0.1); }
         .bio-img { width: 140px; height: 140px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; }
-        .bio-text h3 { font-family: 'Cinzel', serif; color: var(--gold); margin-top: 0; font-size: 1.4rem; }
-        .bio-text p { font-size: 0.95rem; line-height: 1.7; opacity: 0.8; font-weight: 300; }
-
-        /* ZONA DE DESCARGA */
-        .download-box { text-align: center; background: linear-gradient(145deg, #161616, #000); padding: 40px; border-radius: 20px; border: 1px dashed var(--deep-purple); margin-bottom: 60px; }
-        .btn-pdf { background: var(--deep-purple); color: white; padding: 16px 45px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; margin-top: 25px; box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3); }
-        .btn-pdf:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(108, 92, 231, 0.5); }
-
+        
         /* VIDEOS */
         .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .video-card { background: #111; border-radius: 15px; overflow: hidden; border: 1px solid #222; transition: 0.4s; }
-        .video-card:hover { border-color: var(--gold); transform: translateY(-8px); }
-        .thumbnail-wrapper { position: relative; cursor: pointer; background: #000; }
-        .thumbnail-wrapper img { width: 100%; height: 180px; object-fit: cover; opacity: 0.6; transition: 0.3s; }
-        .video-card:hover img { opacity: 0.9; }
-        .play-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 3.5rem; color: var(--gold); opacity: 0.9; text-shadow: 0 0 15px rgba(0,0,0,0.5); }
-        .video-info { padding: 20px; text-align: center; }
-        .video-info h4 { margin: 0; color: var(--white); font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 1px; }
+        .video-card { background: #111; border-radius: 15px; overflow: hidden; border: 1px solid #222; text-align: center; }
+        .thumbnail-wrapper { position: relative; cursor: pointer; height: 180px; background: #000; }
+        .thumbnail-wrapper img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+        .play-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 3rem; color: var(--gold); }
+        .video-info { padding: 15px; font-family: 'Cinzel', serif; font-size: 0.9rem; }
 
-        /* REPRODUCTOR */
-        .yt-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; display: none; }
+        .yt-container { position: relative; padding-bottom: 56.25%; height: 0; display: none; }
         .yt-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-        footer { text-align: center; padding: 60px 20px; opacity: 0.5; font-size: 0.85rem; letter-spacing: 1px; }
+        footer { text-align: center; padding: 60px 20px; opacity: 0.5; font-size: 0.85rem; }
 
-        @media (max-width: 768px) { 
-            .bio-section { flex-direction: column; text-align: center; padding: 25px; }
-            h1 { font-size: 1.7rem; }
-        }
+        @media (max-width: 768px) { .bio-section { flex-direction: column; text-align: center; } }
     </style>
 </head>
 <body>
 
     <div id="login-screen">
         <div class="login-card">
-            <h2>Aula Virtual</h2>
-            <input type="text" id="username" placeholder="Usuario">
-            <input type="password" id="password" placeholder="Contraseña">
-            <button class="btn-login" onclick="checkLogin()">Entrar a la Luz</button>
-            <p id="error-msg" style="color: #ff7675; margin-top: 15px; display: none; font-size: 0.8rem;">Credenciales incorrectas</p>
+            <img src="ojo.png" alt="Símbolo" class="eye-icon">
+            <h2>Taller de Canalización</h2>
+            <p class="subtitle-login">Ingreso al Aula Virtual</p>
+            
+            <div class="input-group">
+                <input type="text" id="username" placeholder="USUARIO">
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="CONTRASEÑA">
+            </div>
+            
+            <button class="btn-login" onclick="checkLogin()">Acceder al Portal</button>
+            <p id="error-msg" style="color: #ff7675; margin-top: 15px; display: none; font-size: 0.7rem; letter-spacing: 1px;">LAS CREDENCIALES NO SON CORRECTAS</p>
         </div>
     </div>
 
     <div id="main-content">
         <header>
-            <h1>Canalización y Mediumnidad</h1>
-            <div class="tagline">Formación para el Despertar</div>
+            <h1>Taller de Canalización y Mediumnidad</h1>
+            <p style="color: var(--purple); letter-spacing: 4px; font-size: 0.7rem; margin-top: 10px;">FORMACIÓN PARA EL DESPERTAR</p>
         </header>
 
         <div class="container">
             
             <section class="bio-section">
-                <img src="jackie.jpg" alt="Jackie Pignatelli" class="bio-img">
+                <img src="jackie.jpg" alt="Jackie" class="bio-img">
                 <div class="bio-text">
-                    <h3>Jackie Pignatelli</h3>
-                    <p>Enlazadora de mundos y canalizadora. En esta formación te guiaré para que logres sintonizar tu propia frecuencia y abrir los canales de comunicación con tus guías y seres de luz de manera segura y amorosa.</p>
+                    <h3 style="font-family: 'Cinzel', serif; color: var(--gold); margin-top: 0;">Jackie Pignatelli</h3>
+                    <p style="font-size: 0.9rem; line-height: 1.6; opacity: 0.8;">Enlazadora de mundos y canalizadora. En este taller aprenderás a conectar con tus guías y a traducir la frecuencia de la luz de manera consciente y segura.</p>
                 </div>
             </section>
 
-            <div class="download-box">
-                <h3 style="color: var(--gold); font-family: 'Cinzel', serif; margin-bottom: 10px;">📚 Manual de Formación</h3>
-                <p>Descarga aquí el material completo en PDF para acompañar tus clases.</p>
-                <a href="material-canalizacion.pdf" download class="btn-pdf">Descargar Guía Maestra</a>
+            <div style="text-align: center; background: #111; padding: 30px; border-radius: 15px; border: 1px dashed var(--deep-purple); margin-bottom: 40px;">
+                <h3 style="font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 15px;">Manual del Taller PDF</h3>
+                <a href="material-canalizacion.pdf" download style="background: var(--deep-purple); color: white; padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: inline-block;">Descargar Guía Maestra</a>
             </div>
 
             <div class="video-grid">
-                
                 <div class="video-card">
                     <div class="thumbnail-wrapper" onclick="playVideo(this, 'ID_YOUTUBE_1')">
                         <img src="video1.jpg" alt="Clase 1">
                         <div class="play-overlay">▶</div>
                         <div class="yt-container"></div>
                     </div>
-                    <div class="video-info"><h4>1. Introducción a la Canalización</h4></div>
+                    <div class="video-info">1. Introducción a la Canalización</div>
                 </div>
-
                 <div class="video-card">
                     <div class="thumbnail-wrapper" onclick="playVideo(this, 'ID_YOUTUBE_2')">
                         <img src="video2.jpg" alt="Clase 2">
                         <div class="play-overlay">▶</div>
                         <div class="yt-container"></div>
                     </div>
-                    <div class="video-info"><h4>2. Teoría Parte 1</h4></div>
+                    <div class="video-info">2. Teoría Parte 1</div>
                 </div>
-
                 <div class="video-card">
                     <div class="thumbnail-wrapper" onclick="playVideo(this, 'ID_YOUTUBE_3')">
                         <img src="video3.jpg" alt="Clase 3">
                         <div class="play-overlay">▶</div>
                         <div class="yt-container"></div>
                     </div>
-                    <div class="video-info"><h4>3. Teoría Parte 2</h4></div>
+                    <div class="video-info">3. Teoría Parte 2</div>
                 </div>
-
             </div>
-
         </div>
 
         <footer>
@@ -137,19 +202,18 @@
             const user = document.getElementById('username').value.toLowerCase();
             const pass = document.getElementById('password').value;
             
-            // Credenciales solicitadas
+            // Usuario: canalizacion | Clave: Canalizacion2026_
             if(user === "canalizacion" && pass === "Canalizacion2026_") {
                 document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
-                localStorage.setItem('aula_canalizacion_auth', 'true');
+                localStorage.setItem('auth_canalizacion', 'true');
             } else {
                 document.getElementById('error-msg').style.display = 'block';
             }
         }
 
-        // Mantener sesión si refresca la página
         window.onload = function() {
-            if(localStorage.getItem('aula_canalizacion_auth') === 'true') {
+            if(localStorage.getItem('auth_canalizacion') === 'true') {
                 document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
             }
@@ -159,7 +223,6 @@
             const container = element.querySelector('.yt-container');
             const img = element.querySelector('img');
             const overlay = element.querySelector('.play-overlay');
-
             container.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
             container.style.display = 'block';
             img.style.display = 'none';
