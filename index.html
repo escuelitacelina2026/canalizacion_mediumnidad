@@ -9,7 +9,7 @@
         :root { --gold: #d4af37; --purple: #a29bfe; --dark: #0a0a0a; --white: #ffffff; --deep-purple: #6c5ce7; }
         body { background-color: var(--dark); color: var(--white); font-family: 'Montserrat', sans-serif; margin: 0; overflow-x: hidden; }
 
-        /* PANTALLA DE LOGIN ESTILO MÍSTICO */
+        /* PANTALLA DE LOGIN */
         #login-screen { 
             position: fixed; 
             width: 100%; 
@@ -25,20 +25,10 @@
             text-align: center; 
             max-width: 400px; 
             width: 90%; 
-            padding: 20px;
-        }
-
-        /* El Ojo (puedes reemplazar 'ojo.png' por tu imagen) */
-        .eye-icon {
-            width: 120px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 15px var(--purple));
-            animation: glow 4s infinite alternate;
-        }
-
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 5px var(--purple)); transform: scale(1); }
-            to { filter: drop-shadow(0 0 20px var(--gold)); transform: scale(1.05); }
+            padding: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(10, 10, 10, 0.8);
+            border-radius: 15px;
         }
 
         .login-card h2 { 
@@ -49,36 +39,47 @@
             text-transform: uppercase;
         }
 
-        .login-card p.subtitle-login {
+        .subtitle-login {
             color: var(--purple);
             font-size: 0.8rem;
             letter-spacing: 4px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             text-transform: uppercase;
         }
 
-        .input-group { margin-bottom: 15px; position: relative; }
+        .input-group { 
+            margin-bottom: 20px; 
+            position: relative; 
+            display: flex;
+            align-items: center;
+        }
 
         input { 
             width: 100%; 
             padding: 14px; 
             border-radius: 5px; 
             border: 1px solid #333; 
-            background: rgba(0,0,0,0.7); 
-            color: white; 
+            background: #f0f4f8; /* Color claro como la imagen */
+            color: #000; 
             box-sizing: border-box; 
             outline: none; 
             text-align: center;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 1px;
+            font-weight: 600;
         }
 
-        input:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            cursor: pointer;
+            color: #000;
+            font-size: 1.2rem;
+            user-select: none;
+        }
 
         .btn-login { 
-            background: transparent; 
-            color: var(--gold); 
-            border: 1px solid var(--gold); 
+            background: #b0915a; /* Color ocre/dorado de la imagen */
+            color: #000; 
+            border: none; 
             padding: 14px 30px; 
             border-radius: 5px; 
             cursor: pointer; 
@@ -90,55 +91,57 @@
             margin-top: 10px;
         }
 
-        .btn-login:hover { 
-            background: var(--gold); 
-            color: black; 
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); 
-        }
+        .btn-login:hover { opacity: 0.9; transform: scale(1.02); }
 
-        /* CONTENIDO POST-LOGIN */
+        /* CONTENIDO PRINCIPAL */
         #main-content { display: none; }
         header { background: #000; padding: 60px 20px; text-align: center; border-bottom: 2px solid var(--deep-purple); }
-        h1 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 2rem; letter-spacing: 3px; margin: 0; }
+        h1 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 2rem; letter-spacing: 2px; margin: 0; }
         
         .container { max-width: 900px; margin: auto; padding: 40px 20px; }
 
-        /* BIOGRAFIA */
-        .bio-section { display: flex; align-items: center; gap: 30px; background: rgba(255,255,255,0.02); padding: 35px; border-radius: 20px; margin-bottom: 50px; border: 1px solid rgba(212, 175, 55, 0.1); }
-        .bio-img { width: 140px; height: 140px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; }
+        /* BIOGRAFIA ACTUALIZADA */
+        .bio-section { background: rgba(255,255,255,0.02); padding: 40px; border-radius: 20px; margin-bottom: 50px; border: 1px solid rgba(212, 175, 55, 0.1); }
+        .bio-header { text-align: center; margin-bottom: 30px; }
+        .bio-header h2 { font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 10px; }
+        .bio-header h3 { font-family: 'Cinzel', serif; color: var(--white); margin-bottom: 20px; }
         
+        .insta-btn { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; padding: 8px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 0.9rem; }
+
+        .bio-list { list-style: none; padding: 0; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; }
+        .bio-list li { margin-bottom: 15px; padding-left: 25px; position: relative; font-size: 0.95rem; line-height: 1.5; opacity: 0.9; }
+        .bio-list li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); }
+
         /* VIDEOS */
         .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .video-card { background: #111; border-radius: 15px; overflow: hidden; border: 1px solid #222; text-align: center; }
-        .thumbnail-wrapper { position: relative; cursor: pointer; height: 180px; background: #000; }
+        .thumbnail-wrapper { position: relative; cursor: pointer; height: 180px; }
         .thumbnail-wrapper img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
         .play-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 3rem; color: var(--gold); }
-        .video-info { padding: 15px; font-family: 'Cinzel', serif; font-size: 0.9rem; }
 
         .yt-container { position: relative; padding-bottom: 56.25%; height: 0; display: none; }
         .yt-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
         footer { text-align: center; padding: 60px 20px; opacity: 0.5; font-size: 0.85rem; }
-
-        @media (max-width: 768px) { .bio-section { flex-direction: column; text-align: center; } }
     </style>
 </head>
 <body>
 
     <div id="login-screen">
         <div class="login-card">
-            <img src="ojo.png" alt="Símbolo" class="eye-icon">
             <h2>Taller de Canalización</h2>
-            <p class="subtitle-login">Ingreso al Aula Virtual</p>
+            <p class="subtitle-login">Aula Virtual</p>
             
             <div class="input-group">
                 <input type="text" id="username" placeholder="USUARIO">
             </div>
+            
             <div class="input-group">
                 <input type="password" id="password" placeholder="CONTRASEÑA">
+                <span class="toggle-password" onclick="togglePass()">👁️</span>
             </div>
             
-            <button class="btn-login" onclick="checkLogin()">Acceder al Portal</button>
+            <button class="btn-login" onclick="checkLogin()">Ingresar al Aula</button>
             <p id="error-msg" style="color: #ff7675; margin-top: 15px; display: none; font-size: 0.7rem; letter-spacing: 1px;">LAS CREDENCIALES NO SON CORRECTAS</p>
         </div>
     </div>
@@ -150,13 +153,26 @@
         </header>
 
         <div class="container">
-            
             <section class="bio-section">
-                <img src="jackie.jpg" alt="Jackie" class="bio-img">
-                <div class="bio-text">
-                    <h3 style="font-family: 'Cinzel', serif; color: var(--gold); margin-top: 0;">Jackie Pignatelli</h3>
-                    <p style="font-size: 0.9rem; line-height: 1.6; opacity: 0.8;">Enlazadora de mundos y canalizadora. En este taller aprenderás a conectar con tus guías y a traducir la frecuencia de la luz de manera consciente y segura.</p>
+                <div class="bio-header">
+                    <h2>Mi Biografía</h2>
+                    <h3>Jacqueline Vanesa Pignatelli</h3>
+                    <a href="https://instagram.com/nave.arcturiana" target="_blank" class="insta-btn">@nave.arcturiana</a>
                 </div>
+                
+                <ul class="bio-list">
+                    <li>Terapeuta Holística Matriculada.</li>
+                    <li>Canalizadora de Cirugía Astral Cristal Arcturiano.</li>
+                    <li>Canalizadora de Técnica Reiki Sandalfon (Sanación del Niño interior).</li>
+                    <li>Comunicación Mediumnica / Enlazadora de mundos.</li>
+                    <li>Instructora de Chikung.</li>
+                    <li>Lectora de Registros Akashicos / Operadora de Mesa Cuántica Energética.</li>
+                    <li>Profesora de Yoga de la Música.</li>
+                    <li>Maestra de Reiki (Usui, Karuna, Jin Kei Do, Chamánico).</li>
+                    <li>Terapeuta Floral, Auriculoterapeuta, del Sonido y Vibracional.</li>
+                    <li>Terapeuta de Técnicas Arcturianas, Pleyadianas y Transgeneracional.</li>
+                    <li>Diseño y desarrollo de ecosistemas de aprendizaje (LMS) con enfoque holístico.</li>
+                </ul>
             </section>
 
             <div style="text-align: center; background: #111; padding: 30px; border-radius: 15px; border: 1px dashed var(--deep-purple); margin-bottom: 40px;">
@@ -167,27 +183,27 @@
             <div class="video-grid">
                 <div class="video-card">
                     <div class="thumbnail-wrapper" onclick="playVideo(this, 'ID_YOUTUBE_1')">
-                        <img src="video1.jpg" alt="Clase 1">
+                        <img src="video1.jpg" alt="Video 1">
                         <div class="play-overlay">▶</div>
                         <div class="yt-container"></div>
                     </div>
-                    <div class="video-info">1. Introducción a la Canalización</div>
+                    <div style="padding: 15px; font-family: 'Cinzel', serif; font-size: 0.9rem;">1. Introducción a la Canalización</div>
                 </div>
                 <div class="video-card">
                     <div class="thumbnail-wrapper" onclick="playVideo(this, 'ID_YOUTUBE_2')">
-                        <img src="video2.jpg" alt="Clase 2">
+                        <img src="video2.jpg" alt="Video 2">
                         <div class="play-overlay">▶</div>
                         <div class="yt-container"></div>
                     </div>
-                    <div class="video-info">2. Teoría Parte 1</div>
+                    <div style="padding: 15px; font-family: 'Cinzel', serif; font-size: 0.9rem;">2. Teoría Parte 1</div>
                 </div>
                 <div class="video-card">
                     <div class="thumbnail-wrapper" onclick="playVideo(this, 'ID_YOUTUBE_3')">
-                        <img src="video3.jpg" alt="Clase 3">
+                        <img src="video3.jpg" alt="Video 3">
                         <div class="play-overlay">▶</div>
                         <div class="yt-container"></div>
                     </div>
-                    <div class="video-info">3. Teoría Parte 2</div>
+                    <div style="padding: 15px; font-family: 'Cinzel', serif; font-size: 0.9rem;">3. Teoría Parte 2</div>
                 </div>
             </div>
         </div>
@@ -198,11 +214,18 @@
     </div>
 
     <script>
+        function togglePass() {
+            const passInput = document.getElementById('password');
+            if (passInput.type === "password") {
+                passInput.type = "text";
+            } else {
+                passInput.type = "password";
+            }
+        }
+
         function checkLogin() {
             const user = document.getElementById('username').value.toLowerCase();
             const pass = document.getElementById('password').value;
-            
-            // Usuario: canalizacion | Clave: Canalizacion2026_
             if(user === "canalizacion" && pass === "Canalizacion2026_") {
                 document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
