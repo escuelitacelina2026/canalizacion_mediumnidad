@@ -11,54 +11,38 @@
 
         /* PANTALLA DE LOGIN */
         #login-screen { 
-            position: fixed; 
-            width: 100%; 
-            height: 100%; 
+            position: fixed; width: 100%; height: 100%; 
             background: radial-gradient(circle, #1a1a1a 0%, #000 100%); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            z-index: 10000; 
+            display: flex; align-items: center; justify-content: center; z-index: 10000; 
         }
-        
         .login-card { 
-            text-align: center; 
-            max-width: 400px; 
-            width: 90%; 
-            padding: 40px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            background: rgba(10, 10, 10, 0.9);
-            border-radius: 15px;
+            text-align: center; max-width: 400px; width: 90%; padding: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.2); background: rgba(10, 10, 10, 0.9); border-radius: 15px;
         }
-
-        .login-card h2 { font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 5px; letter-spacing: 3px; text-transform: uppercase; }
+        .login-card h2 { font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 5px; text-transform: uppercase; }
         .subtitle-login { color: var(--purple); font-size: 0.8rem; letter-spacing: 4px; margin-bottom: 40px; text-transform: uppercase; }
 
         .input-group { margin-bottom: 20px; position: relative; display: flex; align-items: center; }
-        
         input { 
             width: 100%; padding: 14px; border-radius: 5px; border: none; 
             background: #f0f4f8; color: #000; box-sizing: border-box; 
-            outline: none; text-align: center; font-weight: 600; font-family: 'Montserrat', sans-serif;
+            outline: none; text-align: center; font-weight: 600;
         }
-
-        .toggle-password { position: absolute; right: 15px; cursor: pointer; color: #000; font-size: 1.2rem; user-select: none; }
+        .toggle-password { position: absolute; right: 15px; cursor: pointer; color: #000; font-size: 1.2rem; }
 
         .btn-login { 
             background: #b0915a; color: #000; border: none; padding: 14px 30px; 
             border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; 
-            transition: 0.3s; text-transform: uppercase; letter-spacing: 2px; margin-top: 10px;
+            transition: 0.3s; text-transform: uppercase;
         }
-        .btn-login:hover { opacity: 0.9; transform: scale(1.02); }
 
         /* CONTENIDO PRINCIPAL */
         #main-content { display: none; }
         header { background: #000; padding: 60px 20px; text-align: center; border-bottom: 2px solid var(--deep-purple); }
-        h1 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 2rem; letter-spacing: 2px; margin: 0; }
-        
+        h1 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 2rem; margin: 0; }
         .container { max-width: 900px; margin: auto; padding: 40px 20px; }
 
-        /* BIOGRAFIA DESPLEGABLE */
+        /* BIOGRAFIA (OCULTA POR DEFECTO) */
         .bio-toggle-btn {
             background: transparent; border: 1px solid var(--gold); color: var(--gold);
             padding: 12px 25px; border-radius: 50px; cursor: pointer; font-family: 'Cinzel', serif;
@@ -67,28 +51,23 @@
         .bio-toggle-btn:hover { background: var(--gold); color: black; }
 
         #bio-content { 
-            display: none; background: rgba(255,255,255,0.03); 
+            display: none; /* Asegurado que no se vea */
+            background: rgba(255,255,255,0.03); 
             padding: 40px; border-radius: 20px; margin-bottom: 40px; 
             border: 1px solid rgba(212, 175, 55, 0.2);
-            animation: fadeIn 0.5s ease;
         }
-        @keyframes fadeIn { from {opacity: 0; transform: translateY(-10px);} to {opacity: 1; transform: translateY(0);} }
 
         .bio-header { text-align: center; margin-bottom: 20px; }
-        .bio-header h3 { font-family: 'Cinzel', serif; color: var(--gold); margin: 0; }
-        .insta-link { color: var(--purple); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
-
-        .bio-list { list-style: none; padding: 0; margin-top: 20px; }
-        .bio-list li { margin-bottom: 12px; padding-left: 25px; position: relative; font-size: 0.9rem; line-height: 1.4; opacity: 0.9; }
+        .bio-list { list-style: none; padding: 0; }
+        .bio-list li { margin-bottom: 12px; padding-left: 25px; position: relative; font-size: 0.9rem; opacity: 0.9; text-align: left; }
         .bio-list li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); }
 
         /* VIDEOS */
         .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .video-card { background: #111; border-radius: 15px; overflow: hidden; border: 1px solid #222; text-align: center; }
-        .thumbnail-wrapper { position: relative; cursor: pointer; height: 180px; background: #000; }
+        .thumbnail-wrapper { position: relative; cursor: pointer; height: 180px; }
         .thumbnail-wrapper img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
         .play-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 3rem; color: var(--gold); }
-
         .yt-container { position: relative; padding-bottom: 56.25%; height: 0; display: none; }
         .yt-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
@@ -101,16 +80,13 @@
         <div class="login-card">
             <h2>Taller de Canalización</h2>
             <p class="subtitle-login">Aula Virtual</p>
-            
             <div class="input-group">
                 <input type="text" id="username" placeholder="USUARIO">
             </div>
-            
             <div class="input-group">
                 <input type="password" id="password" placeholder="CONTRASEÑA">
                 <span class="toggle-password" onclick="togglePass()">👁️</span>
             </div>
-            
             <button class="btn-login" onclick="checkLogin()">Ingresar al Aula</button>
             <p id="error-msg" style="color: #ff7675; margin-top: 15px; display: none; font-size: 0.7rem;">DATOS INCORRECTOS</p>
         </div>
@@ -124,13 +100,13 @@
 
         <div class="container">
             
-            <button class="bio-toggle-btn" onclick="toggleBio()">✨ Biografía Facilitadora</button>
+            <button class="bio-toggle-btn" id="btnBio" onclick="toggleBio()">✨ Biografía Facilitadora</button>
 
-            <section id="bio-content">
+            <section id="bio-content" style="display: none;">
                 <div class="bio-header">
                     <h3 style="text-transform: uppercase; letter-spacing: 2px;">Biografía Facilitadora</h3>
                     <p style="margin: 10px 0; color: var(--gold); font-family: 'Cinzel', serif;">Jacqueline Vanesa Pignatelli</p>
-                    <a href="https://instagram.com/nave.arcturiana" target="_blank" class="insta-link">@nave.arcturiana</a>
+                    <a href="https://instagram.com/nave.arcturiana" target="_blank" style="color: var(--purple); text-decoration: none;">@nave.arcturiana</a>
                 </div>
                 <ul class="bio-list">
                     <li>Terapeuta Holística Matriculada.</li>
@@ -149,7 +125,7 @@
 
             <div style="text-align: center; background: #111; padding: 30px; border-radius: 15px; border: 1px dashed var(--deep-purple); margin-bottom: 40px;">
                 <h3 style="font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 15px;">Manual del Taller PDF</h3>
-                <a href="material-canalizacion.pdf" download style="background: var(--deep-purple); color: white; padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: inline-block;">Descargar Guía Maestra</a>
+                <a href="material-canalizacion.pdf" download style="background: var(--deep-purple); color: white; padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block;">Descargar Guía Maestra</a>
             </div>
 
             <div class="video-grid">
@@ -159,7 +135,7 @@
                         <div class="play-overlay">▶</div>
                         <div class="yt-container"></div>
                     </div>
-                    <div style="padding: 15px; font-family: 'Cinzel', serif; font-size: 0.8rem;">1. Introducción a la Canalización</div>
+                    <div style="padding: 15px; font-size: 0.8rem;">1. Introducción a la Canalización</div>
                 </div>
                 <div class="video-card">
                     <div class="thumbnail-wrapper" onclick="playVideo(this, 'ID_YOUTUBE_2')">
@@ -167,7 +143,7 @@
                         <div class="play-overlay">▶</div>
                         <div class="yt-container"></div>
                     </div>
-                    <div style="padding: 15px; font-family: 'Cinzel', serif; font-size: 0.8rem;">2. Teoría Parte 1</div>
+                    <div style="padding: 15px; font-size: 0.8rem;">2. Teoría Parte 1</div>
                 </div>
                 <div class="video-card">
                     <div class="thumbnail-wrapper" onclick="playVideo(this, 'ID_YOUTUBE_3')">
@@ -175,7 +151,7 @@
                         <div class="play-overlay">▶</div>
                         <div class="yt-container"></div>
                     </div>
-                    <div style="padding: 15px; font-family: 'Cinzel', serif; font-size: 0.8rem;">3. Teoría Parte 2</div>
+                    <div style="padding: 15px; font-size: 0.8rem;">3. Teoría Parte 2</div>
                 </div>
             </div>
         </div>
@@ -191,39 +167,24 @@
             passInput.type = passInput.type === "password" ? "text" : "password";
         }
 
+        // Función corregida para ocultar/mostrar la biografía
         function toggleBio() {
             const bio = document.getElementById('bio-content');
-            const btn = document.querySelector('.bio-toggle-btn');
-            if (bio.style.display === "block") {
-                bio.style.display = "none";
-                btn.innerText = "✨ Biografía Facilitadora";
-            } else {
+            const btn = document.getElementById('btnBio');
+            if (bio.style.display === "none" || bio.style.display === "") {
                 bio.style.display = "block";
                 btn.innerText = "✨ Ocultar Biografía";
+            } else {
+                bio.style.display = "none";
+                btn.innerText = "✨ Biografía Facilitadora";
             }
         }
 
         function checkLogin() {
             const user = document.getElementById('username').value.toLowerCase().trim();
             const pass = document.getElementById('password').value.trim();
-            
             if(user === "canalizacion" && pass === "Canalizacion2026_") {
                 document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
             } else {
-                document.getElementById('error-msg').style.display = 'block';
-            }
-        }
-
-        function playVideo(element, videoId) {
-            const container = element.querySelector('.yt-container');
-            const img = element.querySelector('img');
-            const overlay = element.querySelector('.play-overlay');
-            container.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-            container.style.display = 'block';
-            img.style.display = 'none';
-            overlay.style.display = 'none';
-        }
-    </script>
-</body>
-</html>
+                document.getElementById('
